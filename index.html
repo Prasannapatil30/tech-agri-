@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>TechAgri — Technology Meets Agriculture Precision</title>
+<style>
+:root{--bg:#040a10;--panel:#0b1723;--line:#1c3547;--green:#22e39a;--cyan:#38d6ff;--muted:#8fb0c6}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Arial;color:#e9f7ff;background:var(--bg)}
+#splash{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:radial-gradient(1000px 600px at 70% 20%,#0d3a57,transparent),radial-gradient(800px 500px at 10% 70%,#123048,transparent),var(--bg);text-align:center;transition:opacity .8s,visibility .8s}
+#splash.hide{opacity:0;visibility:hidden}
+.slogo{width:96px;height:96px;border-radius:26px;background:linear-gradient(135deg,var(--green),var(--cyan));display:grid;place-items:center;font-weight:900;color:#032018;font-size:30px;animation:pop 1.4s ease}
+@keyframes pop{0%{transform:scale(.6);opacity:0}60%{transform:scale(1.08)}100%{transform:scale(1)}}
+.stitle{font-size:clamp(40px,8vw,82px);font-weight:900;margin:22px 0 8px;background:linear-gradient(90deg,#fff,#9ff8d8,#7fdcff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.ssub{color:var(--muted);letter-spacing:2px;text-transform:uppercase;font-size:13px}
+.bar{width:270px;height:5px;border-radius:99px;background:#12283a;margin:28px auto 8px;overflow:hidden}
+.bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--green),var(--cyan));animation:load 2.6s ease forwards}
+@keyframes load{to{width:100%}}
+.snote{font-size:12px;color:var(--muted)}
+header{position:sticky;top:0;z-index:10;background:rgba(4,10,16,.78);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.wrap{max-width:1150px;margin:auto;padding:18px 20px}
+.nav{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.logo{display:flex;gap:12px;align-items:center;font-weight:800}
+.mark{width:42px;height:42px;border-radius:12px;background:linear-gradient(135deg,var(--green),var(--cyan));display:grid;place-items:center;color:#032018;font-weight:900}
+.btn{border:0;border-radius:999px;padding:12px 20px;font-weight:700;cursor:pointer;color:#032018;background:linear-gradient(90deg,var(--green),var(--cyan))}
+.btn.ghost{background:transparent;border:1px solid var(--line);color:#e9f7ff}
+.hero{padding:70px 0 30px;text-align:center}
+h1{font-size:clamp(34px,6vw,68px);line-height:1.05;margin:14px 0;background:linear-gradient(90deg,#fff,#9ff8d8 45%,#7fdcff);-webkit-background-clip:text;background-clip:text;color:transparent}
+p.sub{color:var(--muted);max-width:760px;margin:auto;font-size:17px}
+.pill{display:inline-flex;gap:8px;padding:7px 15px;border:1px solid var(--line);border-radius:99px;color:var(--muted);font-size:12px}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin:34px 0}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.05),transparent);border:1px solid var(--line);border-radius:18px;padding:18px}
+.card h3{margin:8px 0}.card p{color:var(--muted);font-size:14px;line-height:1.55}
+.app{border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#081420}
+.tabs{display:flex;gap:6px;padding:12px;border-bottom:1px solid var(--line);flex-wrap:wrap}
+.tab{padding:9px 14px;border-radius:99px;color:var(--muted);cursor:pointer;font-size:13px;font-weight:700}
+.tab.active{background:linear-gradient(90deg,var(--green),var(--cyan));color:#032018}
+.screen{padding:20px;min-height:560px}
+.hidden{display:none}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}
+.row{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}
+label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px}
+input,select{width:100%;padding:12px;border-radius:12px;border:1px solid var(--line);background:#071119;color:#e9f7ff}
+.upload{border:2px dashed var(--line);border-radius:18px;padding:30px;text-align:center;color:var(--muted);cursor:pointer}
+.upload:hover{border-color:var(--green)}
+.preview{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px}
+.thumb{width:105px;height:78px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+.metric{background:#101f2e;border:1px solid var(--line);border-radius:15px;padding:15px}
+.metric b{display:block;font-size:24px;margin:5px 0}
+.badge{padding:4px 9px;border-radius:99px;font-size:11px;font-weight:800}
+.ok{background:rgba(34,227,154,.15);color:#8ff5cd}.warn{background:rgba(255,193,7,.15);color:#ffd970}.info{background:rgba(56,214,255,.15);color:#9fe6ff}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{padding:10px;border-bottom:1px solid var(--line);text-align:left}th{color:var(--muted);font-size:11px;text-transform:uppercase}
+.switch{width:52px;height:28px;border-radius:99px;background:#233c4f;position:relative;cursor:pointer}
+.switch.on{background:linear-gradient(90deg,var(--green),var(--cyan))}
+.knob{position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s}
+.switch.on .knob{left:27px}
+.muted{color:var(--muted);font-size:13px}
+</style></head><body>
+<div id="splash"><div><div class="slogo">TA</div><div class="stitle">TechAgri</div><div class="ssub">Technology Meets Agriculture Precision</div><div class="bar"><span></span></div><div class="snote">Initializing AI farm intelligence, IoT systems and smart irrigation…</div></div></div>
+<header><div class="wrap nav"><div class="logo"><div class="mark">TA</div><div>TechAgri<br><span style="font-size:11px;color:var(--muted)">Technology Meets Agriculture Precision</span></div></div><button class="btn" onclick="go('setup')">Start Farm Setup</button></div></header>
+<main class="wrap">
+<section class="hero"><div class="pill">● AI FARM ANALYSIS • SMART BLUEPRINT • IoT IRRIGATION</div>
+<h1>Upload your farm.<br>Get a smart farming blueprint.</h1>
+<p class="sub">TechAgri analyzes your farm images and location, designs irrigation zones, recommends IoT sensors and equipment, creates an itemized requirements list, and gives you a dashboard to control pumps, valves and sprinklers.</p>
+<div style="margin:24px 0;display:flex;gap:10px;justify-content:center;flex-wrap:wrap"><button class="btn" onclick="go('setup')">Create My Farm App</button><button class="btn ghost" onclick="go('dashboard')">Open Dashboard</button></div>
+<img src="assets/blueprint_example.png" alt="TechAgri blueprint example" style="width:100%;max-width:1000px;border-radius:20px;border:1px solid var(--line)"></section>
+<section class="cards">
+<div class="card"><h3>📷 AI Farm Analysis</h3><p>Analyze uploaded farm images for crop condition, dry zones, layout and irrigation needs.</p></div>
+<div class="card"><h3>🗺️ Smart Blueprint</h3><p>Generate irrigation zones, pipelines, sensors, pump placement and equipment layout.</p></div>
+<div class="card"><h3>🛒 Requirements List</h3><p>Get exact items and quantities for drip irrigation, sprinklers, valves, sensors and controllers.</p></div>
+<div class="card"><h3>⚙️ IoT Control</h3><p>Control pumps and sprinklers, monitor soil moisture, tank level, weather and irrigation history.</p></div></section>
+<section class="app"><div class="tabs">
+<div class="tab active" data-t="setup" onclick="go('setup')">1. Farm Information</div><div class="tab" data-t="analysis" onclick="go('analysis')">2. AI Analysis</div><div class="tab" data-t="blueprint" onclick="go('blueprint')">3. Blueprint</div><div class="tab" data-t="items" onclick="go('items')">4. Items & Quantity</div><div class="tab" data-t="report" onclick="go('report')">5. Report</div><div class="tab" data-t="dashboard" onclick="go('dashboard')">6. IoT Dashboard</div></div>
+<div class="screen">
+<div id="setup" class="panel"><h2>Create your farm application</h2><p class="muted">Enter farm information and upload images. TechAgri will create your personalized smart-farming application.</p>
+<div class="row" style="margin-top:16px"><div><label>Country</label><select id="country"><option>India</option><option>United States</option><option>Brazil</option><option>Kenya</option></select></div><div><label>State / Province</label><select id="state"><option>Maharashtra</option><option>Punjab</option><option>Karnataka</option><option>California</option></select></div><div><label>City / District</label><input id="city" value="Nashik"></div><div><label>Farm area (acres)</label><input id="area" type="number" value="5"></div><div><label>Primary crop</label><select id="crop"><option>Tomato</option><option>Wheat</option><option>Grapes</option><option>Rice</option><option>Cotton</option></select></div><div><label>Water source</label><select id="water"><option>Borewell</option><option>Canal</option><option>River</option><option>Rainwater</option></select></div></div>
+<div style="margin-top:16px"><label>Upload farm images</label><div class="upload" onclick="document.getElementById('file').click()"><div style="font-size:30px">🛰️</div><b style="color:#e9f7ff">Upload farm photo or drone image</b><p class="muted">Aerial image plus ground photos gives the best blueprint</p><input id="file" type="file" accept="image/*" multiple hidden onchange="addImages(event)"></div><div class="preview" id="preview"></div></div>
+<button class="btn" style="margin-top:18px" onclick="createApp()">Create TechAgri Application</button></div>
+<div id="analysis" class="hidden panel"><h2>AI Farm Analysis Complete</h2><p class="muted" id="meta"></p><div class="row" style="margin-top:16px"><div class="metric"><span class="muted">Farm Health</span><b>78/100</b><span class="badge ok">Good</span></div><div class="metric"><span class="muted">Irrigation Need</span><b>18–24 mm/week</b><span class="badge info">Location-based</span></div><div class="metric"><span class="muted">Recommended System</span><b>Drip + Micro-sprinkler</b><span class="badge warn">Zone-based</span></div><div class="metric"><span class="muted">IoT Sensors</span><b>6 units</b><span class="badge ok">Recommended</span></div></div><div class="panel" style="margin-top:14px;background:#101f2e"><h3>Findings</h3><ul class="muted" style="line-height:1.8;padding-left:20px"><li>Field is suitable for zone-based precision irrigation.</li><li>Dry patches detected; prioritize soil-moisture monitoring.</li><li>Drip irrigation recommended for high-value crop zones.</li><li>Install filtration before drip lines to prevent emitter clogging.</li><li>Use weather-based rain-skip automation.</li></ul></div><button class="btn" style="margin-top:16px" onclick="go('blueprint')">View Smart Blueprint</button></div>
+<div id="blueprint" class="hidden panel"><h2>Smart Farm Blueprint</h2><p class="muted">AI-generated layout based on your farm information and uploaded imagery.</p><img src="assets/blueprint_example.png" style="width:100%;border-radius:16px;border:1px solid var(--line);margin-top:14px"><div class="row" style="margin-top:14px"><div class="metric"><span class="muted">Irrigation Zones</span><b>3</b></div><div class="metric"><span class="muted">Sensor Points</span><b>6</b></div><div class="metric"><span class="muted">Pipe Length</span><b>1,250 m</b></div><div class="metric"><span class="muted">Automation</span><b>Advanced</b></div></div><button class="btn" style="margin-top:16px" onclick="go('items')">View Required Items</button></div>
+<div id="items" class="hidden panel"><h2>Required Items & Quantities</h2><table style="margin-top:14px"><thead><tr><th>Item</th><th>Quantity</th><th>Placement</th><th>Priority</th></tr></thead><tbody><tr><td>Drip lateral pipe</td><td>3,200 m</td><td>Zone 1</td><td><span class="badge ok">Essential</span></td></tr><tr><td>Micro-sprinkler</td><td>180 units</td><td>Zone 2</td><td><span class="badge ok">Essential</span></td></tr><tr><td>Impact sprinkler</td><td>24 units</td><td>Zone 3</td><td><span class="badge info">Recommended</span></td></tr><tr><td>Solenoid valve</td><td>6 units</td><td>Zone manifold</td><td><span class="badge ok">Essential</span></td></tr><tr><td>Smart irrigation controller</td><td>1 unit</td><td>Pump house</td><td><span class="badge ok">Essential</span></td></tr><tr><td>Soil moisture sensor</td><td>6 units</td><td>All zones</td><td><span class="badge ok">Essential</span></td></tr><tr><td>Weather station</td><td>1 unit</td><td>Central field</td><td><span class="badge info">Recommended</span></td></tr><tr><td>Flow meter</td><td>1 unit</td><td>Main line</td><td><span class="badge ok">Essential</span></td></tr><tr><td>Tank level sensor</td><td>1 unit</td><td>Water tank</td><td><span class="badge ok">Essential</span></td></tr><tr><td>Solar pump system</td><td>1 set</td><td>Pump area</td><td><span class="badge warn">Optional</span></td></tr></tbody></table><button class="btn" style="margin-top:16px" onclick="go('report')">Generate Report</button></div>
+<div id="report" class="hidden panel"><h2>Detailed Farm Analysis Report</h2><p class="muted" id="rmeta"></p><div class="row" style="margin-top:14px"><div class="metric"><span class="muted">Priority action</span><b style="font-size:18px">Install drip + moisture automation</b></div><div class="metric"><span class="muted">Expected water saving</span><b>25–40%</b></div><div class="metric"><span class="muted">Install first</span><b style="font-size:18px">Zone 1</b></div><div class="metric"><span class="muted">Monitoring</span><b style="font-size:18px">Daily</b></div></div><div class="panel" style="margin-top:14px;background:#101f2e"><h3>Recommendations</h3><ul class="muted" style="line-height:1.8;padding-left:20px"><li>Use drip irrigation for precise root-zone watering.</li><li>Install soil-moisture sensors at 15 cm and 30 cm depth.</li><li>Automate irrigation using moisture thresholds and rain forecast.</li><li>Use a flow meter to detect leaks and abnormal water use.</li><li>Conduct a soil test before final fertilizer planning.</li></ul></div><button class="btn" style="margin-top:16px" onclick="window.print()">Download / Print Report</button></div>
+<div id="dashboard" class="hidden panel"><div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px"><div><h2 style="margin:0">Live Farm Dashboard</h2><p class="muted" id="dmeta">Nashik, Maharashtra • 5 acres • Tomato</p></div><div style="display:flex;gap:8px"><button class="btn" onclick="togglePump()">Toggle Pump</button><button class="btn ghost" onclick="alert('Emergency stop: all valves closed.')">Emergency Stop</button></div></div><div class="row" style="margin-top:16px"><div class="metric"><span class="muted">Main pump</span><b id="pstate">OFF</b><div class="switch" id="pswitch" onclick="togglePump()"><div class="knob"></div></div></div><div class="metric"><span class="muted">Average soil moisture</span><b>31%</b><span class="badge warn">Irrigation advised</span></div><div class="metric"><span class="muted">Tank level</span><b>72%</b><span class="badge ok">Normal</span></div><div class="metric"><span class="muted">Water used today</span><b>1,840 L</b><span class="muted">Flow meter</span></div></div><div class="panel" style="margin-top:14px;background:#101f2e"><h3 style="margin-top:0">Zone controls</h3><div id="zones"></div></div><div class="panel" style="margin-top:14px;background:#101f2e"><h3 style="margin-top:0">Automation rules</h3><ul class="muted" style="line-height:1.8;padding-left:20px"><li>Start Zone 1 if moisture &lt; 30% and rain forecast &lt; 2 mm.</li><li>Stop all zones if tank level &lt; 20%.</li><li>Skip irrigation for 24 hours after rainfall above 10 mm.</li><li>Alert if a sensor is offline for 30 minutes.</li></ul></div></div>
+</div></section>
+<p class="muted" style="text-align:center;margin:26px 0">TechAgri prototype • AI recommendations should be validated with soil tests and local agricultural experts.</p></main>
+<script>
+let pump=false;const zones=[{n:'Zone 1 — Drip',m:28},{n:'Zone 2 — Micro-sprinkler',m:42},{n:'Zone 3 — Sprinkler',m:55}];
+function go(id){document.querySelectorAll('.screen>.panel').forEach(x=>x.classList.add('hidden'));document.getElementById(id).classList.remove('hidden');document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.t===id));window.scrollTo({top:document.querySelector('.app').offsetTop-80,behavior:'smooth'});}
+function addImages(e){document.getElementById('preview').innerHTML=[...e.target.files].slice(0,6).map(f=>`<img class="thumb" src="${URL.createObjectURL(f)}">`).join('');}
+function createApp(){const a=document.getElementById('area').value||5,c=document.getElementById('crop').value,city=document.getElementById('city').value,s=document.getElementById('state').value,co=document.getElementById('country').value;const m=`${a} acres • ${c} • ${city}, ${s}, ${co}`;document.getElementById('meta').textContent=m;document.getElementById('rmeta').textContent=m;document.getElementById('dmeta').textContent=`${city}, ${s} • ${a} acres • ${c}`;go('analysis');}
+function togglePump(){pump=!pump;document.getElementById('pstate').textContent=pump?'RUNNING':'OFF';document.getElementById('pswitch').classList.toggle('on',pump);}
+document.getElementById('zones').innerHTML=zones.map(z=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)"><div><b>${z.n}</b><div class="muted">Moisture: ${z.m}%</div></div><div class="switch ${z.m<35?'on':''}" onclick="this.classList.toggle('on')"><div class="knob"></div></div></div>`).join('');
+setTimeout(()=>document.getElementById('splash').classList.add('hide'),3000);
+</script></body></html>
